@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ItemDisplayManagerDelegate <NSObject>
 
-- (void)showItem:(Item *)item;
+- (void)showItems:(NSArray<Item *> *)items;
 - (void)sceneDidFinish:(Scene *)scene;
 
 @end
@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithSceneName:(SceneName)sceneName;
 - (void)start;
+- (void)pause;
+- (void)resume;
 
 @end
 

@@ -12,6 +12,11 @@ typedef enum : NSUInteger {
     MessageTypeString,
     MessageTypeImage,
     MessageTypeVideo,
+    MessageTypeSong,
+    MessageTypeLightBuzz,
+    MessageTypeMediumBuzz,
+    MessageTypeHeavyBuzz,
+    MessageTypeCircle,
 } MessageType;
 
 typedef enum : NSUInteger {

@@ -31,12 +31,12 @@ static NSUInteger HashDouble(double givenDouble) {
 
 @implementation Scene
 
-- (instancetype)initWithSceneName:(SceneName)sceneName items:(NSArray<Item *> *)items activeItem:(Item *)activeItem currentTime:(double)currentTime
+- (instancetype)initWithSceneName:(SceneName)sceneName items:(NSArray<Item *> *)items activeItems:(NSArray<Item *> *)activeItems currentTime:(double)currentTime
 {
   if ((self = [super init])) {
     _sceneName = sceneName;
     _items = [items copy];
-    _activeItem = [activeItem copy];
+    _activeItems = [activeItems copy];
     _currentTime = currentTime;
   }
 
@@ -50,12 +50,12 @@ static NSUInteger HashDouble(double givenDouble) {
 
 - (NSString *)description
 {
-  return [NSString stringWithFormat:@"%@ - \n\t sceneName: %tu; \n\t items: %@; \n\t activeItem: %@; \n\t currentTime: %lf; \n", [super description], _sceneName, _items, _activeItem, _currentTime];
+  return [NSString stringWithFormat:@"%@ - \n\t sceneName: %tu; \n\t items: %@; \n\t activeItems: %@; \n\t currentTime: %lf; \n", [super description], _sceneName, _items, _activeItems, _currentTime];
 }
 
 - (NSUInteger)hash
 {
-  NSUInteger subhashes[] = {_sceneName, [_items hash], [_activeItem hash], HashDouble(_currentTime)};
+  NSUInteger subhashes[] = {_sceneName, [_items hash], [_activeItems hash], HashDouble(_currentTime)};
   NSUInteger result = subhashes[0];
   for (int ii = 1; ii < 4; ++ii) {
     unsigned long long base = (((unsigned long long)result) << 32 | subhashes[ii]);
@@ -81,7 +81,7 @@ static NSUInteger HashDouble(double givenDouble) {
     _sceneName == object->_sceneName &&
     CompareDoubles(_currentTime, object->_currentTime) &&
     (_items == object->_items ? YES : [_items isEqual:object->_items]) &&
-    (_activeItem == object->_activeItem ? YES : [_activeItem isEqual:object->_activeItem]);
+    (_activeItems == object->_activeItems ? YES : [_activeItems isEqual:object->_activeItems]);
 }
 
 @end

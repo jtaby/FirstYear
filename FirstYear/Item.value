@@ -1,8 +1,7 @@
 %type name=MessageType file=ViewController
 Item {
-    NSString *message
-    MessageType(NSUInteger) messageType
     double timeToShow
     double duration
-    NSArray<UIColor *> *colors
+    MessageType(NSUInteger) messageType
+    NSString *message
 }

@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A936678B22F42C5B00880702 /* Item.value in Resources */ = {isa = PBXBuildFile; fileRef = A936678A22F42C5B00880702 /* Item.value */; };
-		A936679022F42DB100880702 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = A936678E22F42DB100880702 /* Item.m */; };
 		A936679122F42DB100880702 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = A936678F22F42DB100880702 /* Scene.m */; };
 		A936679422F42E7E00880702 /* ItemDisplayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A936679322F42E7E00880702 /* ItemDisplayManager.m */; };
+		A936679622F46D3400880702 /* CuzILoveYou.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A936679522F46D3400880702 /* CuzILoveYou.mp3 */; };
+		A936679922F484E600880702 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = A936679822F484E600880702 /* Item.m */; };
+		A936679C22F49D6000880702 /* UIColor+hex.m in Sources */ = {isa = PBXBuildFile; fileRef = A936679B22F49D6000880702 /* UIColor+hex.m */; };
 		A98FF5F822F42789006DC6CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FF5F722F42789006DC6CC /* AppDelegate.m */; };
 		A98FF5FB22F42789006DC6CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FF5FA22F42789006DC6CC /* ViewController.m */; };
 		A98FF5FE22F42789006DC6CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A98FF5FC22F42789006DC6CC /* Main.storyboard */; };
@@ -22,12 +24,15 @@
 
 /* Begin PBXFileReference section */
 		A936678A22F42C5B00880702 /* Item.value */ = {isa = PBXFileReference; lastKnownFileType = text; path = Item.value; sourceTree = "<group>"; };
-		A936678C22F42DB100880702 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		A936678D22F42DB100880702 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
-		A936678E22F42DB100880702 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		A936678F22F42DB100880702 /* Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
 		A936679222F42E7E00880702 /* ItemDisplayManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemDisplayManager.h; sourceTree = "<group>"; };
 		A936679322F42E7E00880702 /* ItemDisplayManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemDisplayManager.m; sourceTree = "<group>"; };
+		A936679522F46D3400880702 /* CuzILoveYou.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = CuzILoveYou.mp3; sourceTree = "<group>"; };
+		A936679722F484E600880702 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		A936679822F484E600880702 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		A936679A22F49D6000880702 /* UIColor+hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+hex.h"; sourceTree = "<group>"; };
+		A936679B22F49D6000880702 /* UIColor+hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+hex.m"; sourceTree = "<group>"; };
 		A98FF5F322F42789006DC6CC /* FirstYear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstYear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A98FF5F622F42789006DC6CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A98FF5F722F42789006DC6CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -75,14 +80,17 @@
 				A98FF5F722F42789006DC6CC /* AppDelegate.m */,
 				A98FF5F922F42789006DC6CC /* ViewController.h */,
 				A98FF5FA22F42789006DC6CC /* ViewController.m */,
+				A936679A22F49D6000880702 /* UIColor+hex.h */,
+				A936679B22F49D6000880702 /* UIColor+hex.m */,
 				A936679222F42E7E00880702 /* ItemDisplayManager.h */,
 				A936679322F42E7E00880702 /* ItemDisplayManager.m */,
-				A936678C22F42DB100880702 /* Item.h */,
-				A936678E22F42DB100880702 /* Item.m */,
 				A936678D22F42DB100880702 /* Scene.h */,
 				A936678F22F42DB100880702 /* Scene.m */,
+				A936679722F484E600880702 /* Item.h */,
+				A936679822F484E600880702 /* Item.m */,
 				A98FF60C22F428BB006DC6CC /* Scene.value */,
 				A936678A22F42C5B00880702 /* Item.value */,
+				A936679522F46D3400880702 /* CuzILoveYou.mp3 */,
 				A98FF5FC22F42789006DC6CC /* Main.storyboard */,
 				A98FF5FF22F4278A006DC6CC /* Assets.xcassets */,
 				A98FF60122F4278A006DC6CC /* LaunchScreen.storyboard */,
@@ -151,6 +159,7 @@
 			files = (
 				A936678B22F42C5B00880702 /* Item.value in Resources */,
 				A98FF60D22F428BB006DC6CC /* Scene.value in Resources */,
+				A936679622F46D3400880702 /* CuzILoveYou.mp3 in Resources */,
 				A98FF60322F4278A006DC6CC /* LaunchScreen.storyboard in Resources */,
 				A98FF60022F4278A006DC6CC /* Assets.xcassets in Resources */,
 				A98FF5FE22F42789006DC6CC /* Main.storyboard in Resources */,
@@ -164,7 +173,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A936679022F42DB100880702 /* Item.m in Sources */,
+				A936679C22F49D6000880702 /* UIColor+hex.m in Sources */,
+				A936679922F484E600880702 /* Item.m in Sources */,
 				A98FF5FB22F42789006DC6CC /* ViewController.m in Sources */,
 				A98FF60622F4278A006DC6CC /* main.m in Sources */,
 				A936679422F42E7E00880702 /* ItemDisplayManager.m in Sources */,

@@ -31,14 +31,13 @@ static NSUInteger HashDouble(double givenDouble) {
 
 @implementation Item
 
-- (instancetype)initWithMessage:(NSString *)message messageType:(MessageType)messageType timeToShow:(double)timeToShow duration:(double)duration colors:(NSArray<UIColor *> *)colors
+- (instancetype)initWithTimeToShow:(double)timeToShow duration:(double)duration messageType:(MessageType)messageType message:(NSString *)message
 {
   if ((self = [super init])) {
-    _message = [message copy];
-    _messageType = messageType;
     _timeToShow = timeToShow;
     _duration = duration;
-    _colors = [colors copy];
+    _messageType = messageType;
+    _message = [message copy];
   }
 
   return self;
@@ -51,14 +50,14 @@ static NSUInteger HashDouble(double givenDouble) {
 
 - (NSString *)description
 {
-  return [NSString stringWithFormat:@"%@ - \n\t message: %@; \n\t messageType: %tu; \n\t timeToShow: %lf; \n\t duration: %lf; \n\t colors: %@; \n", [super description], _message, _messageType, _timeToShow, _duration, _colors];
+  return [NSString stringWithFormat:@"%@ - \n\t timeToShow: %lf; \n\t duration: %lf; \n\t messageType: %tu; \n\t message: %@; \n", [super description], _timeToShow, _duration, _messageType, _message];
 }
 
 - (NSUInteger)hash
 {
-  NSUInteger subhashes[] = {[_message hash], _messageType, HashDouble(_timeToShow), HashDouble(_duration), [_colors hash]};
+  NSUInteger subhashes[] = {HashDouble(_timeToShow), HashDouble(_duration), _messageType, [_message hash]};
   NSUInteger result = subhashes[0];
-  for (int ii = 1; ii < 5; ++ii) {
+  for (int ii = 1; ii < 4; ++ii) {
     unsigned long long base = (((unsigned long long)result) << 32 | subhashes[ii]);
     base = (~base) + (base << 18);
     base ^= (base >> 31);
@@ -82,8 +81,7 @@ static NSUInteger HashDouble(double givenDouble) {
     _messageType == object->_messageType &&
     CompareDoubles(_timeToShow, object->_timeToShow) &&
     CompareDoubles(_duration, object->_duration) &&
-    (_message == object->_message ? YES : [_message isEqual:object->_message]) &&
-    (_colors == object->_colors ? YES : [_colors isEqual:object->_colors]);
+    (_message == object->_message ? YES : [_message isEqual:object->_message]);
 }
 
 @end

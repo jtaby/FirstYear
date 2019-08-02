@@ -3,6 +3,6 @@
 Scene {
     SceneName(NSUInteger) sceneName
     NSArray<Item *> *items
-    Item *activeItem
+    NSArray<Item *> *activeItems
     double currentTime
 }
