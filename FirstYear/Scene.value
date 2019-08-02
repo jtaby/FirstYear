@@ -1,0 +1,8 @@
+%type name=SceneName file=ViewController
+
+Scene {
+    SceneName(NSUInteger) sceneName
+    NSArray<Item *> *items
+    Item *activeItem
+    double currentTime
+}
