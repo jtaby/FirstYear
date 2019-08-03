@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSMutableDictionary<Item *, id> *activeViews;
 @property (nonatomic, strong) CAGradientLayer *gradientLayer;
 @property (nonatomic, strong) AVPlayer *audioPlayer;
+@property (nonatomic, strong) UIImpactFeedbackGenerator *feedbackGenerator;
 @property (nonatomic, strong) NSArray<NSArray<id> *> *colors;
 
 @end
@@ -35,6 +36,10 @@
                         @[(id)[UIColor colorWithHEX:@"#E94057"].CGColor,(id)[UIColor colorWithHEX:@"#F27121"].CGColor],
                         @[(id)[UIColor colorWithHEX:@"#E94057"].CGColor,(id)[UIColor colorWithHEX:@"#F27121"].CGColor],
                         ];
+        
+        self.audioPlayer = [[AVPlayer alloc] initWithURL:[[NSBundle mainBundle] URLForResource:@"CuzILoveYou" withExtension:@"mp3"]];
+        
+        self.feedbackGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy];
     }
     return self;
 }
@@ -53,7 +58,7 @@
     
     
     __block int i = -1;
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3. repeats:YES block:^(NSTimer * _Nonnull timer) {
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:6. repeats:YES block:^(NSTimer * _Nonnull timer) {
         NSArray *colors = self.colors[++i % self.colors.count];
         [CATransaction begin];
         [CATransaction setAnimationDuration:3.];
@@ -113,14 +118,17 @@
             viewToShow = [self videoPlayerForItem:item];
             break;
         case MessageTypeSong:
-            self.audioPlayer = [[AVPlayer alloc] initWithURL:[[NSBundle mainBundle] URLForResource:@"CuzILoveYou" withExtension:@"mp3"]];
-            [self.audioPlayer addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+            [self.audioPlayer addObserver:self forKeyPath:@"timeControlStatus" options:NSKeyValueObservingOptionNew context:nil];
             audioPlayer = self.audioPlayer;
             [self.displayManager pause];
+            [self.audioPlayer play];
             break;
         case MessageTypeCircle:
             circle = [self circleForItem:item];
             break;
+        case MessageTypeHeavyBuzz:
+            self.activeViews[item] = self.feedbackGenerator;
+            [self.feedbackGenerator impactOccurred];
         default:break;
     }
     
@@ -140,9 +148,8 @@
                       ofObject:(id)object
                         change:(NSDictionary<NSKeyValueChangeKey,id> *)change
                        context:(void *)context {
-    if (self.audioPlayer.status == AVPlayerStatusReadyToPlay) {
+    if (self.audioPlayer.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
         [NSTimer scheduledTimerWithTimeInterval:.15 repeats:NO block:^(NSTimer * _Nonnull timer) {
-            [self.audioPlayer play];
             [self.displayManager resume];
         }];
     }
