@@ -35,6 +35,14 @@ static NSUInteger HashDouble(double givenDouble) {
     return [[T alloc] initWithShowAt:showAt duration:0 messageType:MessageTypeString message:message];
 }
 
++ (instancetype)time:(double)showAt duration:(double)duration movie:(NSString *)name {
+    return [[T alloc] initWithShowAt:showAt duration:duration messageType:MessageTypeVideo message:name];
+}
+
++ (instancetype)time:(double)showAt duration:(double)duration image:(NSString *)name {
+    return [[T alloc] initWithShowAt:showAt duration:duration messageType:MessageTypeImage message:name];
+}
+
 + (instancetype)time:(double)showAt duration:(double)duration message:(NSString *)message {
     return [[T alloc] initWithShowAt:showAt duration:duration messageType:MessageTypeString message:message];
 }

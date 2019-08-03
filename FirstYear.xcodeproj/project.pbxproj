@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A913EEDD22F5971800D5E3B8 /* Japan.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = A913EEDA22F5971400D5E3B8 /* Japan.MP4 */; };
+		A913EEDE22F5971800D5E3B8 /* Coachella.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = A913EEDC22F5971600D5E3B8 /* Coachella.MP4 */; };
+		A913EEDF22F5971800D5E3B8 /* Dad.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = A913EEDB22F5971500D5E3B8 /* Dad.MP4 */; };
 		A936678B22F42C5B00880702 /* Item.value in Resources */ = {isa = PBXBuildFile; fileRef = A936678A22F42C5B00880702 /* Item.value */; };
 		A936679122F42DB100880702 /* Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = A936678F22F42DB100880702 /* Scene.m */; };
 		A936679422F42E7E00880702 /* ItemDisplayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A936679322F42E7E00880702 /* ItemDisplayManager.m */; };
@@ -15,6 +18,7 @@
 		A936679C22F49D6000880702 /* UIColor+hex.m in Sources */ = {isa = PBXBuildFile; fileRef = A936679B22F49D6000880702 /* UIColor+hex.m */; };
 		A936679E22F5666E00880702 /* T.value in Resources */ = {isa = PBXBuildFile; fileRef = A936679D22F5666E00880702 /* T.value */; };
 		A93667A122F5669900880702 /* T.m in Sources */ = {isa = PBXBuildFile; fileRef = A936679F22F5669800880702 /* T.m */; };
+		A9505C5322F5C27100677DC8 /* Jewel.png in Resources */ = {isa = PBXBuildFile; fileRef = A9505C5222F5C27100677DC8 /* Jewel.png */; };
 		A98FF5F822F42789006DC6CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FF5F722F42789006DC6CC /* AppDelegate.m */; };
 		A98FF5FB22F42789006DC6CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FF5FA22F42789006DC6CC /* ViewController.m */; };
 		A98FF5FE22F42789006DC6CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A98FF5FC22F42789006DC6CC /* Main.storyboard */; };
@@ -25,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A913EEDA22F5971400D5E3B8 /* Japan.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Japan.MP4; sourceTree = "<group>"; };
+		A913EEDB22F5971500D5E3B8 /* Dad.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Dad.MP4; sourceTree = "<group>"; };
+		A913EEDC22F5971600D5E3B8 /* Coachella.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Coachella.MP4; sourceTree = "<group>"; };
 		A936678A22F42C5B00880702 /* Item.value */ = {isa = PBXFileReference; lastKnownFileType = text; path = Item.value; sourceTree = "<group>"; };
 		A936678D22F42DB100880702 /* Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene.h; sourceTree = "<group>"; };
 		A936678F22F42DB100880702 /* Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scene.m; sourceTree = "<group>"; };
@@ -38,6 +45,7 @@
 		A936679D22F5666E00880702 /* T.value */ = {isa = PBXFileReference; lastKnownFileType = text; path = T.value; sourceTree = "<group>"; };
 		A936679F22F5669800880702 /* T.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = T.m; sourceTree = "<group>"; };
 		A93667A022F5669800880702 /* T.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = T.h; sourceTree = "<group>"; };
+		A9505C5222F5C27100677DC8 /* Jewel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Jewel.png; sourceTree = "<group>"; };
 		A98FF5F322F42789006DC6CC /* FirstYear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirstYear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A98FF5F622F42789006DC6CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A98FF5F722F42789006DC6CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -95,6 +103,10 @@
 				A936679822F484E600880702 /* Item.m */,
 				A93667A022F5669800880702 /* T.h */,
 				A936679F22F5669800880702 /* T.m */,
+				A913EEDA22F5971400D5E3B8 /* Japan.MP4 */,
+				A913EEDC22F5971600D5E3B8 /* Coachella.MP4 */,
+				A913EEDB22F5971500D5E3B8 /* Dad.MP4 */,
+				A9505C5222F5C27100677DC8 /* Jewel.png */,
 				A98FF60C22F428BB006DC6CC /* Scene.value */,
 				A936678A22F42C5B00880702 /* Item.value */,
 				A936679D22F5666E00880702 /* T.value */,
@@ -165,13 +177,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9505C5322F5C27100677DC8 /* Jewel.png in Resources */,
 				A936678B22F42C5B00880702 /* Item.value in Resources */,
+				A913EEDD22F5971800D5E3B8 /* Japan.MP4 in Resources */,
 				A98FF60D22F428BB006DC6CC /* Scene.value in Resources */,
 				A936679E22F5666E00880702 /* T.value in Resources */,
 				A936679622F46D3400880702 /* CuzILoveYou.mp3 in Resources */,
 				A98FF60322F4278A006DC6CC /* LaunchScreen.storyboard in Resources */,
 				A98FF60022F4278A006DC6CC /* Assets.xcassets in Resources */,
+				A913EEDE22F5971800D5E3B8 /* Coachella.MP4 in Resources */,
 				A98FF5FE22F42789006DC6CC /* Main.storyboard in Resources */,
+				A913EEDF22F5971800D5E3B8 /* Dad.MP4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

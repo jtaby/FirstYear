@@ -30,8 +30,8 @@
         if (sceneName == SceneNameWelcome) {
             preprocessedItems = @[
                                   @[
-                                      [T time:0.0 message:@"Dear\n"],
-                                      [T time:0.5 duration:1. message:@"Dear\nAmadea,"],
+                                      [T time:2.0 message:@"Dear\n"],
+                                      [T time:2.5 duration:1. message:@"Dear\nAmadea,"],
                                       [T gap:1.0]
                                       ],
                                   @[
@@ -78,11 +78,13 @@
                                       [T circleAtTime:7.73],
                                       [T circleAtTime:8.06],
                                       [T circleAtTime:8.36],
+                                      [T circleAtTime:8.66],
                                       [T buzzAtTime:6.23],
                                       [T buzzAtTime:7.33],
                                       [T buzzAtTime:7.73],
                                       [T buzzAtTime:8.06],
                                       [T buzzAtTime:8.36],
+                                      [T buzzAtTime:8.66],
                                       [T gap:3.0]
                                       ],
                                   @[
@@ -96,8 +98,16 @@
                                       [T gap:1.0]
                                       ],
                                   @[
+                                      [T time:0.00 duration:11.0 movie:@"Coachella"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
                                       [T time:0.00 message:@"and it had\n"],
                                       [T time:1.00 duration:1.5 message:@"and it had\nits low lows."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:6 movie:@"Dad"],
                                       [T gap:1.0]
                                       ],
                                   @[
@@ -155,7 +165,7 @@
                                       [T gap:1.0]
                                       ],
                                   @[
-                                      [T time:0.00 duration:3 message:@"We've seen the world change,"],
+                                      [T time:0.00 duration:3 message:@"We've learned a lot,"],
                                       [T gap:1.0]
                                       ],
                                   @[
@@ -188,10 +198,16 @@
                                   @[
                                       [T time:0.00 message:@"As long as I'm there\n"],
                                       [T time:1.00 duration:4 message:@"As long as I'm there\nwith you."],
-                                      [T gap:3.0]
+                                      [T gap:2.0]
                                       ],
                                   @[
-                                      [T time:0.00 duration:4 message:@"Here's to a hundred more years together."],
+                                      [T time:0.00 message:@"Anything,\n\n"],
+                                      [T time:2.00 message:@"Anything,\nAnywhere,\n"],
+                                      [T time:4.00 duration:2 message:@"Anything,\nAnywhere,\nAnytime."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:4 image:@"Jewel.png"],
                                       [T gap:1.0]
                                       ]
                                   ];
@@ -226,7 +242,8 @@
                         duration = tList[[tList indexOfObject:t] + 1].showAt - t.showAt;
                     }
                     
-                    if (t.messageType == MessageTypeString) {
+                    if (t.messageType == MessageTypeString ||
+                        t.messageType == MessageTypeVideo) {
                         groupDuration = t.showAt + duration;
                     }
                     

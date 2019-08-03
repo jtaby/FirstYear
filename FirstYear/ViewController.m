@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSMutableDictionary<Item *, id> *activeViews;
 @property (nonatomic, strong) CAGradientLayer *gradientLayer;
 @property (nonatomic, strong) AVPlayer *audioPlayer;
+@property (nonatomic, strong) AVPlayerLayer *videoPlayerLayer;
 @property (nonatomic, strong) UIImpactFeedbackGenerator *feedbackGenerator;
 @property (nonatomic, strong) NSArray<NSArray<id> *> *colors;
 
@@ -87,6 +88,11 @@
 //                NSLog(@"Removing %@", existingItem);
                 [self.activeViews[existingItem] removeFromSuperview];
             }
+            else if (existingItem.messageType == MessageTypeVideo) {
+                [self.videoPlayerLayer removeFromSuperlayer];
+                [self.videoPlayerLayer removeObserver:self forKeyPath:@"readyForDisplay"];
+                self.videoPlayerLayer = nil;
+            }
             else if (existingItem.messageType == MessageTypeSong) {
 
             }
@@ -104,7 +110,6 @@
 - (void)showItem:(Item *)item {
     UIView *viewToShow = nil;
     UIView *circle = nil;
-    AVPlayerItem *playerItem = nil;
     AVPlayer *audioPlayer = nil;
     
     switch(item.messageType) {
@@ -116,6 +121,7 @@
             break;
         case MessageTypeVideo:
             viewToShow = [self videoPlayerForItem:item];
+            [self.displayManager pause];
             break;
         case MessageTypeSong:
             [self.audioPlayer addObserver:self forKeyPath:@"timeControlStatus" options:NSKeyValueObservingOptionNew context:nil];
@@ -129,6 +135,7 @@
         case MessageTypeHeavyBuzz:
             self.activeViews[item] = self.feedbackGenerator;
             [self.feedbackGenerator impactOccurred];
+            break;
         default:break;
     }
     
@@ -148,8 +155,15 @@
                       ofObject:(id)object
                         change:(NSDictionary<NSKeyValueChangeKey,id> *)change
                        context:(void *)context {
-    if (self.audioPlayer.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
+    if (object == self.audioPlayer && self.audioPlayer.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
         [NSTimer scheduledTimerWithTimeInterval:.15 repeats:NO block:^(NSTimer * _Nonnull timer) {
+            [self.displayManager resume];
+        }];
+    }
+    
+    if (object == self.videoPlayerLayer && self.videoPlayerLayer.isReadyForDisplay) {
+        [NSTimer scheduledTimerWithTimeInterval:.15 repeats:NO block:^(NSTimer * _Nonnull timer) {
+            [self.videoPlayerLayer.player playImmediatelyAtRate:1.];
             [self.displayManager resume];
         }];
     }
@@ -160,7 +174,10 @@
 }
 
 - (UIImageView *)imageViewForItem:(Item *)item {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:item.message]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:item.message] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    imageView.tintColor = [UIColor whiteColor];
+    imageView.frame = self.view.bounds;
+    imageView.contentMode = UIViewContentModeCenter;
     imageView.translatesAutoresizingMaskIntoConstraints = NO;
     return imageView;
 }
@@ -177,7 +194,16 @@
 }
 
 - (UIView *)videoPlayerForItem:(Item *)item {
-    return nil;
+    AVPlayer *player = [AVPlayer playerWithURL:[[NSBundle mainBundle] URLForResource:item.message withExtension:@"MP4"]];
+    player.volume = 0;
+    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+    playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+    playerLayer.frame = self.view.bounds;
+    UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
+    [view.layer addSublayer:playerLayer];
+    self.videoPlayerLayer = playerLayer;
+    [playerLayer addObserver:self forKeyPath:@"readyForDisplay" options:NSKeyValueObservingOptionNew context:nil];
+    return view;
 }
 
 - (UIView *)circleForItem:(Item *)item {

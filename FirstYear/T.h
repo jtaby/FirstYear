@@ -14,6 +14,8 @@
 @property (nonatomic, readonly, copy) NSString *message;
 
 + (instancetype)time:(double)showAt message:(NSString *)message;
++ (instancetype)time:(double)showAt duration:(double)duration movie:(NSString *)name;
++ (instancetype)time:(double)showAt duration:(double)duration image:(NSString *)name;
 + (instancetype)time:(double)showAt duration:(double)duration message:(NSString *)message;
 
 + (instancetype)circleAtTime:(double)showAt;
