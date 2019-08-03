@@ -4,6 +4,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "ViewController.h"
 #import "Item.h"
 
 @interface Scene : NSObject <NSCopying>

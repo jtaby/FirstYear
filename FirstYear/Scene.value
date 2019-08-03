@@ -1,4 +1,5 @@
 %type name=SceneName file=ViewController
+%type name=Item file=Item
 
 Scene {
     SceneName(NSUInteger) sceneName

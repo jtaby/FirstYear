@@ -7,18 +7,9 @@
 //
 
 #import "ItemDisplayManager.h"
+#import "T.h"
 
-#define ICRIED                1.50 + 1.0
-#define CRYHAPPY ICRIED     + 3.60 + 1.0
-#define CRYSAD CRYHAPPY     + 3.15 + 1.0
-#define BUTTODAY CRYSAD     + 3.15 + 1.0
-#define SONGINTRO BUTTODAY  + 2.10 + 1.0
-#define WEARENOW SONGINTRO  + 7.60 + 3.0
-#define HIGHUPS WEARENOW  + 7.60 + 3.0
-#define LOWLOWS HIGHUPS  + 7.60 + 3.0
-#define JOYORSORROW LOWLOWS  + 7.60 + 3.0
-#define SHOULDER JOYORSORROW  + 7.60 + 3.0
-#define YOUTOO1 SHOULDER  + 7.60 + 3.0
+#define JUMPSTARTTIME 95.
 
 @interface ItemDisplayManager ()
 
@@ -34,107 +25,221 @@
 
 - (instancetype)initWithSceneName:(SceneName)sceneName {
     if (self = [super init]) {
-        NSArray<Item *> *items = nil;
+        NSArray<NSArray<T *> *> *preprocessedItems = nil;
         
         if (sceneName == SceneNameWelcome) {
-            items = @[
-                      
-                      [[Item alloc] initWithTimeToShow:0.0 duration:0.5 messageType:MessageTypeString message:@"Dear\n"],
-                      [[Item alloc] initWithTimeToShow:0.5 duration:1.0 messageType:MessageTypeString message:@"Dear\nAmadea,"],
-                      
-                      [[Item alloc] initWithTimeToShow:ICRIED + 0.05 duration:0.5 messageType:MessageTypeString message:@"I've\n\n"],
-                      [[Item alloc] initWithTimeToShow:ICRIED + 0.10 duration:0.8 messageType:MessageTypeString message:@"I've cried\n\n"],
-                      [[Item alloc] initWithTimeToShow:ICRIED + 0.85 duration:0.5 messageType:MessageTypeString message:@"I've cried\na\n"],
-                      [[Item alloc] initWithTimeToShow:ICRIED + 0.88 duration:0.5 messageType:MessageTypeString message:@"I've cried\na few\n"],
-                      [[Item alloc] initWithTimeToShow:ICRIED + 0.93 duration:0.5 messageType:MessageTypeString message:@"I've cried\na few times\n"],
-                      [[Item alloc] initWithTimeToShow:ICRIED + 1.47 duration:0.5 messageType:MessageTypeString message:@"I've cried\na few times\nin"],
-                      [[Item alloc] initWithTimeToShow:ICRIED + 1.43 duration:0.5 messageType:MessageTypeString message:@"I've cried\na few times\nin our"],
-                      [[Item alloc] initWithTimeToShow:ICRIED + 1.60 duration:2.0 messageType:MessageTypeString message:@"I've cried\na few times\nin our relationship."],
-                      
-                      [[Item alloc] initWithTimeToShow:CRYHAPPY + 0.00 duration:2.0 messageType:MessageTypeString message:@"I've\n"],
-                      [[Item alloc] initWithTimeToShow:CRYHAPPY + 0.10 duration:2.0 messageType:MessageTypeString message:@"I've cried\n"],
-                      [[Item alloc] initWithTimeToShow:CRYHAPPY + 1.00 duration:2.0 messageType:MessageTypeString message:@"I've cried\nfrom"],
-                      [[Item alloc] initWithTimeToShow:CRYHAPPY + 1.15 duration:2.0 messageType:MessageTypeString message:@"I've cried\nfrom happiness."],
-                      
-                      [[Item alloc] initWithTimeToShow:CRYSAD + 0.00 duration:2.0 messageType:MessageTypeString message:@"and\n"],
-                      [[Item alloc] initWithTimeToShow:CRYSAD + 0.10 duration:2.0 messageType:MessageTypeString message:@"and I've\n"],
-                      [[Item alloc] initWithTimeToShow:CRYSAD + 0.30 duration:2.0 messageType:MessageTypeString message:@"and I've cried\n"],
-                      [[Item alloc] initWithTimeToShow:CRYSAD + 1.00 duration:2.0 messageType:MessageTypeString message:@"and I've cried\nfrom"],
-                      [[Item alloc] initWithTimeToShow:CRYSAD + 1.15 duration:2.0 messageType:MessageTypeString message:@"and I've cried\nfrom sadness."],
-                      
-                      [[Item alloc] initWithTimeToShow:BUTTODAY + 0.00 duration:0.8 messageType:MessageTypeString message:@"But"],
-                      [[Item alloc] initWithTimeToShow:BUTTODAY + 0.10 duration:2.0 messageType:MessageTypeString message:@"But today,"],
-                      
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:120. messageType:MessageTypeSong  message:@"CuzILoveYou"],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.50 duration:2.0 messageType:MessageTypeString message:@"I'm\n"],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 1.16 duration:2.0 messageType:MessageTypeString message:@"I'm cryin\n"],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 2.33 duration:2.0 messageType:MessageTypeString message:@"I'm cryin\n'cause"],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 3.00 duration:2.0 messageType:MessageTypeString message:@"I'm cryin\n'cause I"],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 3.30 duration:2.0 messageType:MessageTypeString message:@"I'm cryin\n'cause I love"],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 4.60 duration:3.0 messageType:MessageTypeString message:@"I'm cryin\n'cause I love you."],
-                      
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 6.23 duration:8.0 messageType:MessageTypeCircle message:nil],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 7.33 duration:8.0 messageType:MessageTypeCircle message:nil],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 7.73 duration:8.0 messageType:MessageTypeCircle message:nil],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 8.06 duration:8.0 messageType:MessageTypeCircle message:nil],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 8.36 duration:8.0 messageType:MessageTypeCircle message:nil],
-                      
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 6.23 duration:8.0 messageType:MessageTypeHeavyBuzz message:nil],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 7.33 duration:8.0 messageType:MessageTypeHeavyBuzz message:nil],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 7.73 duration:8.0 messageType:MessageTypeHeavyBuzz message:nil],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 8.06 duration:8.0 messageType:MessageTypeHeavyBuzz message:nil],
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 8.36 duration:8.0 messageType:MessageTypeHeavyBuzz message:nil],
-                      
-                      [[Item alloc] initWithTimeToShow:WEARENOW + 0.00 duration:1.0 messageType:MessageTypeString message:@"We are now\n"],
-                      [[Item alloc] initWithTimeToShow:WEARENOW + 1.00 duration:2.0 messageType:MessageTypeString message:@"We are now\none year in."],
-
-                      [[Item alloc] initWithTimeToShow:HIGHUPS + 0.00 duration:3.0 messageType:MessageTypeString message:@"It has had\n"],
-                      [[Item alloc] initWithTimeToShow:HIGHUPS + 1.00 duration:3.0 messageType:MessageTypeString message:@"It has had\nits high ups,"],
-
-                      [[Item alloc] initWithTimeToShow:LOWLOWS + 0.00 duration:3.0 messageType:MessageTypeString message:@"and it had its\n"],
-                      [[Item alloc] initWithTimeToShow:LOWLOWS + 1.00 duration:3.0 messageType:MessageTypeString message:@"and it had its\nlow lows."],
-
-                      [[Item alloc] initWithTimeToShow:JOYORSORROW + 0.00 duration:3.0 messageType:MessageTypeString message:@"But\n"],
-                      [[Item alloc] initWithTimeToShow:JOYORSORROW + 0.00 duration:3.0 messageType:MessageTypeString message:@"But whether\n"],
-                      [[Item alloc] initWithTimeToShow:JOYORSORROW + 0.00 duration:3.0 messageType:MessageTypeString message:@"But whether in\n"],
-                      [[Item alloc] initWithTimeToShow:JOYORSORROW + 0.00 duration:3.0 messageType:MessageTypeString message:@"But whether in\njoy"],
-                      [[Item alloc] initWithTimeToShow:JOYORSORROW + 0.00 duration:3.0 messageType:MessageTypeString message:@"But whether in\njoy or"],
-                      [[Item alloc] initWithTimeToShow:JOYORSORROW + 0.00 duration:3.0 messageType:MessageTypeString message:@"But whether in\njoy or in"],
-                      [[Item alloc] initWithTimeToShow:JOYORSORROW + 0.00 duration:3.0 messageType:MessageTypeString message:@"But whether in\njoy or in sorrow,"],
-
-                      [[Item alloc] initWithTimeToShow:SHOULDER + 0.00 duration:3.0 messageType:MessageTypeString message:@"I've had a shoulder\n"],
-                      [[Item alloc] initWithTimeToShow:SHOULDER + 0.00 duration:3.0 messageType:MessageTypeString message:@"I've had a shoulder to cry on,"],
-
-                      [[Item alloc] initWithTimeToShow:YOUTOO1 + 0.00 duration:3.0 messageType:MessageTypeString message:@"And I hope you've had one too."],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"In need or in love, I've had a hand to hold,"],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"And I hope you had one too."],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"We've talked about our days,"],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"And we've talked about our problems."],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"We've been busy,"],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"we've been free."],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"We've seen the world change,"],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"And we've seen each other grow."],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"We're just getting started,"],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"But baby, with you,"],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"It doesn't matter where the journey takes us,"],
-//
-//                      [[Item alloc] initWithTimeToShow:SONGINTRO + 0.00 duration:3.0 messageType:MessageTypeString message:@"As long as I'm there with you."],
-//
-                      [[Item alloc] initWithTimeToShow:SONGINTRO + 120.00 duration:3.0 messageType:MessageTypeString message:@"Here's to a hundred more years together."],
-                      ];
+            preprocessedItems = @[
+                                  @[
+                                      [T time:0.0 message:@"Dear\n"],
+                                      [T time:0.5 duration:1. message:@"Dear\nAmadea,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"I've\n\n"],
+                                      [T time:0.10 message:@"I've cried\n\n"],
+                                      [T time:0.85 message:@"I've cried\na\n"],
+                                      [T time:0.88 message:@"I've cried\na few\n"],
+                                      [T time:0.93 message:@"I've cried\na few times\n"],
+                                      [T time:1.47 message:@"I've cried\na few times\nin"],
+                                      [T time:1.50 message:@"I've cried\na few times\nin our"],
+                                      [T time:1.60 duration:1. message:@"I've cried\na few times\nin our relationship."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"I've\n"],
+                                      [T time:0.10 message:@"I've cried\n"],
+                                      [T time:1.00 message:@"I've cried\nfrom"],
+                                      [T time:1.15 duration:1. message:@"I've cried\nfrom happiness."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"and\n"],
+                                      [T time:0.10 message:@"and I've\n"],
+                                      [T time:0.30 message:@"and I've cried\n"],
+                                      [T time:1.00 message:@"and I've cried\nfrom"],
+                                      [T time:1.15 duration:1. message:@"and I've cried\nfrom sadness."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"But"],
+                                      [T time:0.10 duration:1. message:@"But today,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T songAtTime:0.00 name:@"CuzILoveYou"],
+                                      [T time:0.50 message:@"I'm\n"],
+                                      [T time:1.16 message:@"I'm cryin\n"],
+                                      [T time:2.33 message:@"I'm cryin\n'cause"],
+                                      [T time:3.00 message:@"I'm cryin\n'cause I"],
+                                      [T time:3.30 message:@"I'm cryin\n'cause I love"],
+                                      [T time:4.60 duration:4. message:@"I'm cryin\n'cause I love you."],
+                                      [T circleAtTime:6.23],
+                                      [T circleAtTime:7.33],
+                                      [T circleAtTime:7.73],
+                                      [T circleAtTime:8.06],
+                                      [T circleAtTime:8.36],
+                                      [T buzzAtTime:6.23],
+                                      [T buzzAtTime:7.33],
+                                      [T buzzAtTime:7.73],
+                                      [T buzzAtTime:8.06],
+                                      [T buzzAtTime:8.36],
+                                      [T gap:3.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"We are now\n"],
+                                      [T time:1.00 duration:1.5 message:@"We are now\none year in."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"It has had\n"],
+                                      [T time:1.00 duration:1.5 message:@"It has had\nits high ups,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"and it had\n"],
+                                      [T time:1.00 duration:1.5 message:@"and it had\nits low lows."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"But\n"],
+                                      [T time:0.10 message:@"But whether\n"],
+                                      [T time:0.25 message:@"But whether in\n"],
+                                      [T time:0.45 message:@"But whether in joy\n"],
+                                      [T time:1.00 message:@"But whether in joy\nor"],
+                                      [T time:1.10 message:@"But whether in joy\nor in"],
+                                      [T time:1.40 duration:1 message:@"But whether in joy\nor in sorrow,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"I've had a shoulder\n"],
+                                      [T time:0.00 duration:3 message:@"I've had a shoulder\nto cry on,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:3 message:@"And I hope you've had one too."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"In need,\n\n"],
+                                      [T time:0.50 message:@"In need,\nor in love,\n"],
+                                      [T time:2.50 duration:3. message:@"In need,\nor in love,\nI've had a hand to hold,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:3. message:@"And I hope you've had one too."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"We've\n"],
+                                      [T time:0.10 message:@"We've talked\n"],
+                                      [T time:0.50 message:@"We've talked\nabout"],
+                                      [T time:0.75 message:@"We've talked\nabout our"],
+                                      [T time:1.0 duration:2 message:@"We've talked\nabout our days,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"And\n"],
+                                      [T time:0.10 message:@"And we've\n"],
+                                      [T time:0.50 message:@"And we've talked\n"],
+                                      [T time:1.00 message:@"And we've talked\nabout"],
+                                      [T time:1.20 message:@"And we've talked\nabout our"],
+                                      [T time:1.50 duration:2 message:@"And we've talked\nabout our problems."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:2 message:@"We've been busy,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:2 message:@"we've been free."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:3 message:@"We've seen the world change,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:3 message:@"And we've seen each other grow."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"But"],
+                                      [T time:0.50 duration:3 message:@"But baby,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"We're\n"],
+                                      [T time:0.15 message:@"We're just\n"],
+                                      [T time:1.00 message:@"We're just\ngetting"],
+                                      [T time:1.50 duration:3 message:@"We're just\ngetting started,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"It\n\n"],
+                                      [T time:0.10 message:@"It doesn't\n\n"],
+                                      [T time:0.25 message:@"It doesn't matter\n\n"],
+                                      [T time:0.80 message:@"It doesn't matter\nwhere\n"],
+                                      [T time:0.95 message:@"It doesn't matter\nwhere the\n"],
+                                      [T time:1.15 message:@"It doesn't matter\nwhere the journey\n"],
+                                      [T time:1.35 message:@"It doesn't matter\nwhere the journey\ntakes"],
+                                      [T time:1.50 duration:3 message:@"It doesn't matter\nwhere the journey\ntakes us,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 message:@"As long as I'm there\n"],
+                                      [T time:1.00 duration:4 message:@"As long as I'm there\nwith you."],
+                                      [T gap:3.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:4 message:@"Here's to a hundred more years together."],
+                                      [T gap:1.0]
+                                      ]
+                                  ];
         }
+        
+        double runningTime = 0;
+        NSMutableArray<Item *> *items = [NSMutableArray array];
+        
+        for (NSArray<T *> *tList in preprocessedItems) {
+            double startTimeForGroup  = runningTime;
+            double groupDuration = 0.;
             
+            double groupGap = 0;
+            for (T *t in tList) {
+                if (t.messageType == MessageTypeGap) {
+                    groupGap += t.showAt;
+                }
+            }
+            
+            for (T *t in tList) {
+                if (t.messageType != MessageTypeGap) {
+                    double timeToShow = startTimeForGroup + t.showAt;
+                    double duration = 0;
+                    
+                    if (t.duration > 0.) {
+                        duration = t.duration;
+                    }
+                    else if (t == tList.lastObject) {
+                        duration = 1.;
+                    }
+                    else {
+                        duration = tList[[tList indexOfObject:t] + 1].showAt - t.showAt;
+                    }
+                    
+                    if (t.messageType == MessageTypeString) {
+                        groupDuration = t.showAt + duration;
+                    }
+                    
+                    MessageType messageType = t.messageType;
+                    NSString *message = t.message;
+                    Item *item = [[Item alloc] initWithTimeToShow:timeToShow duration:duration messageType:messageType message:message];
+                    [items addObject:item];
+                }
+            }
+            
+            runningTime += groupDuration + groupGap;
+        }
+        
         self.scene = [[Scene alloc] initWithSceneName:sceneName items:items activeItems:nil currentTime:0];
         
         self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(tick:)];
@@ -153,7 +258,7 @@
 - (void)pause {
     self.displayLink.paused = YES;
     self.pauseTime = CACurrentMediaTime();
-//    NSLog(@"Pause");
+    //    NSLog(@"Pause");
 }
 
 - (void)resume {
@@ -163,9 +268,9 @@
 }
 
 - (void)tick:(CADisplayLink *)displayLink {
-    double currentTime = CACurrentMediaTime() + 4.6 - self.startTime - self.accumulatedPauseTime;
+    double currentTime = CACurrentMediaTime() + JUMPSTARTTIME - self.startTime - self.accumulatedPauseTime;
     
-//    NSLog(@"Time: %.3f", currentTime);
+    //    NSLog(@"Time: %.3f", currentTime);
     
     if (currentTime > self.scene.items.lastObject.timeToShow + self.scene.items.lastObject.duration) {
         [self.delegate sceneDidFinish:self.scene];

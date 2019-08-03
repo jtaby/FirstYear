@@ -1,0 +1,7 @@
+%type name=MessageType file=ViewController
+T {
+double showAt
+MessageType(NSUInteger) messageType
+NSString *message
+}
+

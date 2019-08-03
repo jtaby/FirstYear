@@ -17,6 +17,7 @@ typedef enum : NSUInteger {
     MessageTypeMediumBuzz,
     MessageTypeHeavyBuzz,
     MessageTypeCircle,
+    MessageTypeGap,
 } MessageType;
 
 typedef enum : NSUInteger {
