@@ -9,7 +9,7 @@
 #import "ItemDisplayManager.h"
 #import "T.h"
 
-#define JUMPSTARTTIME 95.
+#define JUMPSTARTTIME 0.
 
 @interface ItemDisplayManager ()
 
