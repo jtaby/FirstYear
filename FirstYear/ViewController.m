@@ -128,9 +128,12 @@
             audioPlayer = self.audioPlayer;
             [self.displayManager pause];
             [self.audioPlayer play];
+            self.activeViews[item] = audioPlayer;
+            [self.displayManager pause];
             break;
         case MessageTypeCircle:
             circle = [self circleForItem:item];
+            [self animateCircle:circle forItem:item];
             break;
         case MessageTypeHeavyBuzz:
             self.activeViews[item] = self.feedbackGenerator;
@@ -142,24 +145,21 @@
     if (viewToShow) {
         [self showView:viewToShow forItem:item];
     }
-    else if (circle) {
-        [self animateCircle:circle forItem:item];
-    }
-    else if  (audioPlayer) {
-        self.activeViews[item] = audioPlayer;
-        [self.displayManager pause];
-    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary<NSKeyValueChangeKey,id> *)change
                        context:(void *)context {
-    if (object == self.audioPlayer && self.audioPlayer.timeControlStatus == AVPlayerTimeControlStatusPlaying) {
-        [NSTimer scheduledTimerWithTimeInterval:.15 repeats:NO block:^(NSTimer * _Nonnull timer) {
-            [self.displayManager resume];
-        }];
+    if (object == self.audioPlayer) {
+        NSLog(@"%.3f", self.audioPlayer.currentTime);
     }
+//    if (object == self.audioPlayer && self.audioPlayer.status == AVPlayerStatusReadyToPlay) {
+//        [NSTimer scheduledTimerWithTimeInterval:.15 repeats:NO block:^(NSTimer * _Nonnull timer) {
+//            [self.audioPlayer play];
+//            [self.displayManager resume];
+//        }];
+//    }
     
     if (object == self.videoPlayerLayer && self.videoPlayerLayer.isReadyForDisplay) {
         [NSTimer scheduledTimerWithTimeInterval:.15 repeats:NO block:^(NSTimer * _Nonnull timer) {
@@ -218,7 +218,7 @@
                                               [circle.heightAnchor constraintEqualToAnchor:circle.widthAnchor],
                                               ]];
     
-    circle.transform = CGAffineTransformMakeScale(0.01, 0.01);
+    circle.transform = CGAffineTransformMakeScale(0.1, 0.1);
     
     return circle;
 }

@@ -37,12 +37,12 @@
                                   @[
                                       [T time:0.00 message:@"I've\n\n"],
                                       [T time:0.10 message:@"I've cried\n\n"],
-                                      [T time:0.85 message:@"I've cried\na\n"],
-                                      [T time:0.88 message:@"I've cried\na few\n"],
-                                      [T time:0.93 message:@"I've cried\na few times\n"],
-                                      [T time:1.47 message:@"I've cried\na few times\nin"],
-                                      [T time:1.50 message:@"I've cried\na few times\nin our"],
-                                      [T time:1.60 duration:1. message:@"I've cried\na few times\nin our relationship."],
+                                      [T time:0.45 message:@"I've cried\na\n"],
+                                      [T time:0.48 message:@"I've cried\na few\n"],
+                                      [T time:0.63 message:@"I've cried\na few times\n"],
+                                      [T time:0.97 message:@"I've cried\na few times\nin"],
+                                      [T time:1.20 message:@"I've cried\na few times\nin our"],
+                                      [T time:1.40 duration:1. message:@"I've cried\na few times\nin our relationship."],
                                       [T gap:1.0]
                                       ],
                                   @[
