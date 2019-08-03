@@ -30,8 +30,8 @@
         if (sceneName == SceneNameWelcome) {
             preprocessedItems = @[
                                   @[
-                                      [T time:2.0 message:@"Dear\n"],
-                                      [T time:2.5 duration:1. message:@"Dear\nAmadea,"],
+                                      [T time:1.0 message:@"Dear\n"],
+                                      [T time:1.5 duration:1. message:@"Dear\nAmadea,"],
                                       [T gap:1.0]
                                       ],
                                   @[
@@ -41,15 +41,15 @@
                                       [T time:0.48 message:@"I've cried\na few\n"],
                                       [T time:0.63 message:@"I've cried\na few times\n"],
                                       [T time:0.97 message:@"I've cried\na few times\nin"],
-                                      [T time:1.20 message:@"I've cried\na few times\nin our"],
-                                      [T time:1.40 duration:1. message:@"I've cried\na few times\nin our relationship."],
+                                      [T time:1.10 message:@"I've cried\na few times\nin our"],
+                                      [T time:1.20 duration:1. message:@"I've cried\na few times\nin our relationship."],
                                       [T gap:1.0]
                                       ],
                                   @[
                                       [T time:0.00 message:@"I've\n"],
                                       [T time:0.10 message:@"I've cried\n"],
                                       [T time:1.00 message:@"I've cried\nfrom"],
-                                      [T time:1.15 duration:1. message:@"I've cried\nfrom happiness."],
+                                      [T time:1.15 duration:1. message:@"I've cried\nfrom happiness,"],
                                       [T gap:1.0]
                                       ],
                                   @[
@@ -63,7 +63,7 @@
                                   @[
                                       [T time:0.00 message:@"But"],
                                       [T time:0.10 duration:1. message:@"But today,"],
-                                      [T gap:1.0]
+                                      [T gap:0.5]
                                       ],
                                   @[
                                       [T songAtTime:0.00 name:@"CuzILoveYou"],
@@ -85,7 +85,7 @@
                                       [T buzzAtTime:8.06],
                                       [T buzzAtTime:8.36],
                                       [T buzzAtTime:8.66],
-                                      [T gap:3.0]
+                                      [T gap:2.0]
                                       ],
                                   @[
                                       [T time:0.00 message:@"We are now\n"],
@@ -104,7 +104,7 @@
                                   @[
                                       [T time:0.00 message:@"and it had\n"],
                                       [T time:1.00 duration:1.5 message:@"and it had\nits low lows."],
-                                      [T gap:1.0]
+                                      [T gap:1.5]
                                       ],
                                   @[
                                       [T time:0.00 duration:6 movie:@"Dad"],
@@ -137,7 +137,7 @@
                                       ],
                                   @[
                                       [T time:0.00 duration:3. message:@"And I hope you've had one too."],
-                                      [T gap:1.0]
+                                      [T gap:1.2]
                                       ],
                                   @[
                                       [T time:0.00 message:@"We've\n"],
@@ -145,7 +145,7 @@
                                       [T time:0.50 message:@"We've talked\nabout"],
                                       [T time:0.75 message:@"We've talked\nabout our"],
                                       [T time:1.0 duration:2 message:@"We've talked\nabout our days,"],
-                                      [T gap:1.0]
+                                      [T gap:2.0]
                                       ],
                                   @[
                                       [T time:0.00 message:@"And\n"],
@@ -154,23 +154,23 @@
                                       [T time:1.00 message:@"And we've talked\nabout"],
                                       [T time:1.20 message:@"And we've talked\nabout our"],
                                       [T time:1.50 duration:2 message:@"And we've talked\nabout our problems."],
-                                      [T gap:1.0]
+                                      [T gap:2.0]
                                       ],
                                   @[
                                       [T time:0.00 duration:2 message:@"We've been busy,"],
-                                      [T gap:1.0]
+                                      [T gap:2.0]
                                       ],
                                   @[
                                       [T time:0.00 duration:2 message:@"we've been free."],
-                                      [T gap:1.0]
+                                      [T gap:2.0]
                                       ],
                                   @[
                                       [T time:0.00 duration:3 message:@"We've learned a lot,"],
-                                      [T gap:1.0]
+                                      [T gap:2.0]
                                       ],
                                   @[
                                       [T time:0.00 duration:3 message:@"And we've seen each other grow."],
-                                      [T gap:1.0]
+                                      [T gap:2.0]
                                       ],
                                   @[
                                       [T time:0.00 message:@"But"],
@@ -198,7 +198,7 @@
                                   @[
                                       [T time:0.00 message:@"As long as I'm there\n"],
                                       [T time:1.00 duration:4 message:@"As long as I'm there\nwith you."],
-                                      [T gap:2.0]
+                                      [T gap:1.0]
                                       ],
                                   @[
                                       [T time:0.00 message:@"Anything,\n\n"],
@@ -282,6 +282,10 @@
     self.accumulatedPauseTime = CACurrentMediaTime() - self.pauseTime;
     self.displayLink.paused = NO;
     NSLog(@"Resume after %.3f pause", self.accumulatedPauseTime);
+}
+
+- (BOOL)isPaused {
+    return self.displayLink.isPaused;
 }
 
 - (void)tick:(CADisplayLink *)displayLink {

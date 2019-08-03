@@ -40,9 +40,20 @@
         
         self.audioPlayer = [[AVPlayer alloc] initWithURL:[[NSBundle mainBundle] URLForResource:@"CuzILoveYou" withExtension:@"mp3"]];
         
+        __weak typeof(self)weakSelf = self;
+        [self.audioPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+            if (weakSelf.displayManager.isPaused && CMTimeGetSeconds(weakSelf.audioPlayer.currentTime) > 0) {
+                [weakSelf.displayManager resume];
+            }
+        }];
+        
         self.feedbackGenerator = [[UIImpactFeedbackGenerator alloc] initWithStyle:UIImpactFeedbackStyleHeavy];
     }
     return self;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 - (void)viewDidLoad {
@@ -124,12 +135,10 @@
             [self.displayManager pause];
             break;
         case MessageTypeSong:
-            [self.audioPlayer addObserver:self forKeyPath:@"timeControlStatus" options:NSKeyValueObservingOptionNew context:nil];
             audioPlayer = self.audioPlayer;
             [self.displayManager pause];
             [self.audioPlayer play];
             self.activeViews[item] = audioPlayer;
-            [self.displayManager pause];
             break;
         case MessageTypeCircle:
             circle = [self circleForItem:item];
@@ -151,16 +160,6 @@
                       ofObject:(id)object
                         change:(NSDictionary<NSKeyValueChangeKey,id> *)change
                        context:(void *)context {
-    if (object == self.audioPlayer) {
-        NSLog(@"%.3f", self.audioPlayer.currentTime);
-    }
-//    if (object == self.audioPlayer && self.audioPlayer.status == AVPlayerStatusReadyToPlay) {
-//        [NSTimer scheduledTimerWithTimeInterval:.15 repeats:NO block:^(NSTimer * _Nonnull timer) {
-//            [self.audioPlayer play];
-//            [self.displayManager resume];
-//        }];
-//    }
-    
     if (object == self.videoPlayerLayer && self.videoPlayerLayer.isReadyForDisplay) {
         [NSTimer scheduledTimerWithTimeInterval:.15 repeats:NO block:^(NSTimer * _Nonnull timer) {
             [self.videoPlayerLayer.player playImmediatelyAtRate:1.];

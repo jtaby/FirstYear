@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ItemDisplayManager : NSObject
 
 @property (nonatomic, weak) id<ItemDisplayManagerDelegate>delegate;
+@property (nonatomic, assign, readonly) BOOL isPaused;
+
+
+
 
 - (instancetype)initWithSceneName:(SceneName)sceneName;
 - (void)start;
