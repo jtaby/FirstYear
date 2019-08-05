@@ -133,19 +133,19 @@
                                       [T time:0.00 message:@"In need,\n\n"],
                                       [T time:0.50 message:@"In need,\nor in love,\n"],
                                       [T time:2.50 duration:3. message:@"In need,\nor in love,\nI've had a hand to hold,"],
-                                      [T gap:1.5]
+                                      [T gap:1.0]
                                       ],
                                   @[
                                       [T time:0.00 duration:3. message:@"And I hope you've had one too."],
-                                      [T gap:1.2]
+                                      [T gap:1.0]
                                       ],
                                   @[
                                       [T time:0.00 message:@"We've\n"],
                                       [T time:0.10 message:@"We've talked\n"],
                                       [T time:0.50 message:@"We've talked\nabout"],
                                       [T time:0.75 message:@"We've talked\nabout our"],
-                                      [T time:1.0 duration:2.5 message:@"We've talked\nabout our days,"],
-                                      [T gap:1.5]
+                                      [T time:1.0 duration:2 message:@"We've talked\nabout our days,"],
+                                      [T gap:1.0]
                                       ],
                                   @[
                                       [T time:0.00 message:@"And\n"],
@@ -153,20 +153,24 @@
                                       [T time:0.50 message:@"And we've talked\n"],
                                       [T time:1.00 message:@"And we've talked\nabout"],
                                       [T time:1.20 message:@"And we've talked\nabout our"],
-                                      [T time:1.50 duration:2.5 message:@"And we've talked\nabout our problems."],
+                                      [T time:1.50 duration:2 message:@"And we've talked\nabout our problems."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:2 message:@"We've been busy,"],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:2 message:@"we've been free."],
+                                      [T gap:1.0]
+                                      ],
+                                  @[
+                                      [T time:0.00 duration:3 message:@"We've learned a lot,"],
                                       [T gap:1.5]
                                       ],
                                   @[
-                                      [T time:0.00 duration:2.5 message:@"We've been busy,"],
-                                      [T gap:1.5]
-                                      ],
-                                  @[
-                                      [T time:0.00 duration:2.5 message:@"we've been free."],
-                                      [T gap:1.5]
-                                      ],
-                                  @[
-                                      [T time:0.00 duration:2.5 message:@"We've learned a lot,"],
-                                      [T gap:1.5]
+                                      [T time:0.00 duration:3 message:@"We've traveled a lot,"],
+                                      [T gap:2.2]
                                       ],
                                   @[
                                       [T time:0.00 duration:3 message:@"And we've seen each other grow."],
